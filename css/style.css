@@ -1009,6 +1009,9 @@ body {
 .mobile-nav-on {
   overflow: hidden;
 }
+a:visited {
+  color: #a0a;
+}
 .article-category-link,
 .archive-year,
 .widget-title {
@@ -1193,11 +1196,12 @@ body {
 .article-title {
   font-size: 1.15em;
   line-height: 1.75em;
-  color: #00a;
   text-decoration: underline;
 }
 .article-body {
-  color: #555;
+  font-size: 110%;
+  text-align: justify;
+  line-height: 1.5em;
   padding: 0 0px;
 }
 .article-body .article-title {
@@ -1234,13 +1238,6 @@ body {
 .article-body h6 {
   line-height: 1.1em;
   margin: 1.1em 0;
-}
-.article-body a {
-  color: #258fb8;
-  text-decoration: none;
-}
-.article-body a:hover {
-  text-decoration: underline;
 }
 .article-body ul,
 .article-body ol,
