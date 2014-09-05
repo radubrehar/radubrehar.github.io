@@ -976,7 +976,8 @@ body {
 .outer,
 #header {
   white-space: nowrap;
-  padding: 0 20%;
+  margin: 0 auto 0 auto;
+  width: 42em;
 }
 .outer {
   -webkit-box-flex: 1 0 auto;
@@ -1138,7 +1139,7 @@ a:visited {
   font-weight: bold;
 }
 #header {
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 50px;
 }
 #header .title,
@@ -1156,6 +1157,9 @@ a:visited {
 #header .subtitle {
   font-size: 18px;
   color: #808080;
+}
+.article-entry {
+  display: list-item;
 }
 .article {
   padding: 0px;
