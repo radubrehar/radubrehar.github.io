@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>A more powerful hasOwnProperty | On web and JavaScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="For a while now I started using NPM and publishing many small modules that do one thing, and do it well. One such module is the hasown package, which is a simple yet more powerful Object.hasOwnPropert">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A more powerful hasOwnProperty">
+<meta property="og:url" content="http://jslog.com/2015/07/09/hasown-curried/">
+<meta property="og:site_name" content="On web and JavaScript">
+<meta property="og:description" content="For a while now I started using NPM and publishing many small modules that do one thing, and do it well. One such module is the hasown package, which is a simple yet more powerful Object.hasOwnPropert">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A more powerful hasOwnProperty">
+<meta name="twitter:description" content="For a while now I started using NPM and publishing many small modules that do one thing, and do it well. One such module is the hasown package, which is a simple yet more powerful Object.hasOwnPropert">
+
+  
+    <link rel="alternative" href="/atom.xml" title="On web and JavaScript" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" />
+  <!-- <link rel="stylesheet" href="/css/style.css" type="text/css">
+ -->
+  <link rel="stylesheet" href="/css/style.css?1411111818317" type="text/css" />
+
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7863640-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body>
+    <header id="header" class="page-width">
+    <h1><a href="/" class="title">On web and JavaScript</a></h1>
+    <h2><a href="/" class="subtitle"> - by Radu Brehar</a></h2>
+</header>
+    <div class="menu-pages">
+    <a href="/about">About</a>
+    <a href="mailto:radu@evanghelic.ro" target="_blank">Hire me</a>
+</div>
+
+    <div class="outer page-width">
+        <article id="post-hasown-curried" class="article article-body article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <span class="article-date">
+  <time datetime="2015-07-08T21:00:00.000Z" itemprop="datePublished">09 Jul 2015</time>
+</span>
+    
+  </div>
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+
+<h1 class="article-title" itemprop="name">
+    A more powerful hasOwnProperty
+</h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+        <p>For a while now I started using <strong>NPM</strong> and publishing many small modules that do one thing, and do it well. One such module is the <a href="https://www.npmjs.org/package/hasown" target="_blank" rel="external">hasown</a> package, which is a simple yet more powerful <strong>Object.hasOwnProperty</strong> replacement.</p>
+<p>You usually use <strong>hasOwn</strong> with for loops, so here is a comparison between the tranditional method and the <strong>hasown</strong> module</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//traditional use:</span></div><div class="line"><span class="keyword">var</span> obj = { firstName: <span class="string">''</span>, lastName: <span class="string">''</span>}</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) <span class="keyword">if</span> (obj.hasOwnProperty(k)){</div><div class="line">    <span class="built_in">console</span>.log(obj[k])</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> hasOwn = <span class="built_in">require</span>(<span class="string">'hasown'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = { ... }</div><div class="line"><span class="keyword">var</span> objHasOwn = hasOwn(obj)</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) <span class="keyword">if</span> (objHasOwn(k)){</div><div class="line">    <span class="built_in">console</span>.log(k)</div><div class="line">    <span class="comment">//or you can use if (hasOwn(obj, k))</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>So you can either use <a href="https://www.npmjs.org/package/hasown" target="_blank" rel="external">hasown</a> with two arguments, the host object and a property name, or you can use the curried form. When you call <strong>hasown</strong> with one arg, it returns a function that accepts one parameter. When you call this function it returns a boolean depending of whether your bound object has the given property as an own property.</p>
+<p>This is a really small module, but it makes code clearer and easier to read.</p>
+
+    </div>
+  </div>
+
+</article>
+
+
+
+    </div>
+
+    <footer id="footer">
+  <div class="page-width">
+    <div class="footer-info">
+      &copy; 2014 Radu Brehar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7863640-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
