@@ -874,7 +874,8 @@ body {
   background-color: #fff;
   font: 13.34px helvetica, arial, clean, sans-serif;
 }
-.page-width {
+.page-width,
+.menu-pages {
   margin: 0 auto 0 auto;
   width: 42em;
   max-width: 90%;
@@ -1011,6 +1012,12 @@ a:visited {
 #header .subtitle {
   font-size: 18px;
   color: #808080;
+}
+.menu-pages {
+  text-align: right;
+}
+.menu-pages a {
+  color: #a00;
 }
 .article-item {
   display: list-item;
