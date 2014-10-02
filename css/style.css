@@ -880,6 +880,9 @@ body {
   width: 42em;
   max-width: 90%;
 }
+body.post-page .page-width {
+  width: 62em;
+}
 #all-posts {
   padding: 0px;
   margin: 0px;
@@ -1018,6 +1021,9 @@ a:visited {
 }
 .menu-pages a {
   color: #a00;
+}
+body.post-page .menu-pages {
+  width: 62em;
 }
 .article-item {
   display: list-item;
